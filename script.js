@@ -5,3 +5,10 @@ for(let i=1; i<1025; i++) {
     div.setAttribute("class", "box")
     container.append(div)
 }
+
+const boxes = document.querySelectorAll(".box")
+boxes.forEach(box => {
+    box.addEventListener("mouseover", () => {
+    box.style.backgroundColor = "black"
+    })
+})
