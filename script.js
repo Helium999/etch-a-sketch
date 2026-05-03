@@ -6,9 +6,44 @@ for(let i=1; i<1025; i++) {
     container.append(div)
 }
 
-const boxes = document.querySelectorAll(".box")
-boxes.forEach(box => {
-    box.addEventListener("mouseover", () => {
-    box.style.backgroundColor = "black"
+
+function changeCanvasSize() {
+    container.innerHTML = ""
+    let newSize;
+
+    do {
+        newSize = Number(prompt("Enter number of squares per side of new grid: "));
+
+        if (!Number.isInteger(newSize) || newSize < 1 || newSize > 100) {
+            newSize = Number(prompt("Invalid input. Enter a number ≤ 100: "));
+        }
+
+    } while (!Number.isInteger(newSize) || newSize < 1 || newSize > 100);
+
+    for(let i=0; i<(newSize*newSize); i++) {
+    const div = document.createElement('div')
+    div.setAttribute("class", "box")
+    container.append(div)
+    }
+
+    const boxes = document.querySelectorAll(".box")
+    let newWidth = container.clientWidth/newSize
+    boxes.forEach(box => {
+        box.style.width = `${newWidth}px`
+        box.style.height = `${newWidth}px`
     })
+}
+
+
+const sizeChangeBtn = document.querySelector("#sizeChangeBtn")
+sizeChangeBtn.addEventListener('click', () => {
+    changeCanvasSize()
 })
+
+
+container.addEventListener("mouseover", (e) => {
+    if (e.target.classList.contains("box")) {
+        e.target.style.backgroundColor = "black";
+    }
+});
+
