@@ -10,12 +10,12 @@ for(let i=1; i<1025; i++) {
 function changeCanvasSize() {
     container.innerHTML = ""
     let newSize;
-
+    let message = "Enter number of squares per side of new grid: "
     do {
-        newSize = Number(prompt("Enter number of squares per side of new grid: "));
+        newSize = Number(prompt(`${message}`));
 
         if (!Number.isInteger(newSize) || newSize < 1 || newSize > 100) {
-            newSize = Number(prompt("Invalid input. Enter a number ≤ 100: "));
+            message = "Invalid input. Enter a number ≤ 100: ";
         }
 
     } while (!Number.isInteger(newSize) || newSize < 1 || newSize > 100);
