@@ -40,10 +40,22 @@ sizeChangeBtn.addEventListener('click', () => {
     changeCanvasSize()
 })
 
+let isDrawing = false;
 
-container.addEventListener("mouseover", (e) => {
+container.addEventListener("mousedown", (e) => {
     if (e.target.classList.contains("box")) {
+        isDrawing = true;
         e.target.style.backgroundColor = "black";
     }
+});
+
+container.addEventListener("mouseover", (e) => {
+    if (isDrawing && e.target.classList.contains("box")) {
+        e.target.style.backgroundColor = "black";
+    }
+});
+
+document.addEventListener("mouseup", () => {
+    isDrawing = false;
 });
 
